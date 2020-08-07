@@ -3,24 +3,12 @@ import ReactDOM from 'react-dom';
 import Drink from './Drink';
 
 const App = () => {
-  return React.createElement('div', {}, [
-    React.createElement('h3', {}, '🍸 Mix!tUp'),
-    React.createElement(Drink, {
-      name: 'Margarita',
-      category: 'Ordinary Drink',
-      types: 'Alcoholic'
-    }),
-    React.createElement(Drink, {
-      name: 'Margarita',
-      category: 'Ordinary Drink',
-      types: 'Alcoholic'
-    }),
-    React.createElement(Drink, {
-      name: 'Margarita',
-      category: 'Ordinary Drink',
-      types: 'Alcoholic'
-    })
-  ]);
+  return (
+    <>
+      <h1 className="logo">🍸 Mix<span>!</span>tUp </h1>
+      <Drink name="Mojito" category="Classic" types="Alcoholic" />
+    </>
+  );
 };
 
-ReactDOM.render(React.createElement(App), document.getElementById('root'));
+ReactDOM.render(<App />, document.getElementById('root'));

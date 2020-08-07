@@ -1,11 +1,387 @@
+/*------------------
+=> Variables
+--------------------*/
+:root {
+  --color-main: #8cbd18;
+  --color-main-light: #f8ffb3;
+  --color-dark: #333;
+  --color-gray: #888;
+  --color-gray-light: #ddd;
+  --color-light: #f9f9f9;
+  --color-white: #fff;
+}
+
+/*------------------
+=> Base Styles
+--------------------*/
+
 html {
   font-size: 62.5%;
 }
 
 * {
   font-family: 'Lexend Deca', sans-serif;
+  margin: 0;
+  padding: 0;
 }
 
 body {
   font-size: 1.3rem;
+  color: var(--color-dark);
+  background-color: var(--color-light);
+}
+
+a {
+  text-decoration: none;
+  color: var(--color-dark);
+}
+
+/*------------------
+=> Components
+--------------------*/
+
+.btn {
+  font-size: 1.2rem;
+  padding: 0.8rem 3.5rem;
+  display: inline-block;
+  border: none;
+  outline: none;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.btn--dark {
+  background-color: var(--color-dark);
+  color: var(--color-white);
+}
+
+.btn:hover {
+  opacity: 0.9;
+}
+
+/*------------------
+=> Header Section
+--------------------*/
+
+header {
+  text-align: center;
+  border-bottom: 2px solid var(--color-light);
+  background-color: var(--color-white);
+  padding: 1.5rem 0;
+  position: fixed;
+  width: 100%;
+}
+
+.logo {
+  font-size: 1.8rem;
+}
+
+.logo span {
+  color: var(--color-main);
+  font-style: italic;
+  display: inline-block;
+  padding-left: 1px;
+  padding-right: 4px;
+}
+
+.logo__subtitle {
+  color: var(--color-gray);
+}
+
+/*------------------
+=> Search Box
+--------------------*/
+.search {
+  max-width: 60%;
+  margin: 0 auto;
+  text-align: center;
+  padding-top: 11.8rem;
+  padding-bottom: 4rem;
+}
+
+.search__input {
+  width: 30rem;
+  padding: 0.6rem;
+  border-radius: 3px;
+  border: 2px solid var(--color-gray);
+  margin-right: 1rem;
+  transition: all 0.3s ease-in-out;
+}
+
+.search__input:focus {
+  border-color: var(--color-dark);
+}
+
+/*------------------
+=> Main container
+--------------------*/
+
+.content-box {
+  width: 70%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+}
+
+/*------------------
+=> Filter Box
+--------------------*/
+
+.filters {
+  width: 24rem;
+  padding: 3rem;
+  background: var(--color-white);
+  border-radius: 0.5rem;
+  align-self: flex-start;
+  border: 2px solid var(--color-light);
+  transition: all 0.3s;
+}
+
+.filters:hover {
+  border-color: var(--color-main-light);
+}
+
+.filters__title {
+  margin-bottom: 2rem;
+}
+
+.filters-box:not(:last-of-type) {
+  margin-bottom: 3rem;
+}
+
+.filters-box__input {
+  padding: 0.6rem;
+  width: 24rem;
+  border-radius: 3px;
+  border: 2px solid var(--color-dark);
+}
+
+.results {
+  flex-basis: 65%;
+}
+
+/*------------------
+=> Search Results
+--------------------*/
+
+.results__card {
+  display: block;
+}
+
+.cocktail-box {
+  border: 2px solid var(--color-light);
+  display: flex;
+  align-items: center;
+  padding: 2.5rem;
+  background-color: var(--color-white);
+  border-radius: 0.5rem;
+  transition: all 0.3s;
+}
+
+.cocktail-box:not(:last-of-type) {
+  margin-bottom: 2.5rem;
+}
+
+.cocktail-box:hover {
+  border: 2px solid var(--color-main-light);
+}
+.cocktail-box__thumb {
+  width: 95%;
+}
+
+.cocktail-box__info {
+  margin-left: 1rem;
+}
+
+.cocktail-box__title {
+  line-height: 1;
+  color: var(--color-main);
+  margin-bottom: 1rem;
+}
+
+.cocktail-box__meta {
+  margin-bottom: 0.5rem;
+  color: var(--color-gray);
+  letter-spacing: 0.3px;
+}
+
+.cocktail-box__meta span {
+  font-weight: bold;
+  color: var(--color-dark);
+}
+
+.cocktail-box__link {
+  margin-top: 1rem;
+}
+
+/*------------------
+=> Pagination
+--------------------*/
+
+.pagination {
+  padding: 5rem 0;
+  display: flex;
+  justify-content: space-between;
+}
+
+.pagination__link {
+  padding: 0.5rem 3rem;
+  background-color: var(--color-white);
+  border: 2px solid var(--color-gray-light);
+  border-radius: 5rem;
+  transition: all 0.3s;
+}
+
+.pagination__link:hover {
+  background-color: var(--color-main-light);
+  color: var(--color-main);
+}
+
+.pagination__link--disabled {
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+.pagination__link--disabled:hover {
+  cursor: not-allowed;
+  background-color: var(--color-white);
+  color: var(--color-dark);
+}
+
+/*------------------
+=> Footer Section
+--------------------*/
+
+footer {
+  border-top: 2px solid var(--color-main-light);
+  padding: 2.5rem;
+  background-color: var(--color-white);
+  text-align: center;
+}
+
+footer a {
+  color: var(--color-main);
+  display: inline-block;
+  border-bottom: 2px solid var(--color-main-light);
+}
+
+/*------------------
+=> Single Page
+--------------------*/
+.back-btn {
+  background-color: var(--color-dark);
+  position: fixed;
+  left: 10rem;
+  top: 10rem;
+  border-radius: 50%;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+}
+.back-btn img {
+  width: 1.8rem;
+  height: 1.8rem;
+}
+
+.single-area {
+  padding-top: 12rem;
+  padding-bottom: 4rem;
+}
+
+.cocktail-box--single {
+  border: 2px solid var(--color-gray-light);
+  padding: 0;
+  flex-direction: column;
+  align-items: flex-start;
+  flex-basis: 35%;
+  overflow: hidden;
+  background-color: var(--color-white);
+  border-radius: 0.5rem;
+}
+
+.cocktail-box--single .cocktail-box__caption {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+}
+
+.cocktail-box__caption .cocktail-box__title {
+  line-height: 1.3;
+  letter-spacing: 0.5px;
+  margin-top: 0.8rem;
+  flex-basis: 88%;
+}
+
+.share-btn {
+  background-color: var(--color-main);
+  border-radius: 50%;
+  width: 3rem;
+  height: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.share-btn img {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.cocktail-box__img {
+  width: 100%;
+}
+.cocktail-box--single .cocktail-box__info {
+  margin-top: 1rem;
+}
+
+.cocktail-instructions {
+  flex-basis: 60%;
+}
+
+.cocktail-instructions .cocktail-box__title {
+  font-size: 2rem;
+}
+
+.cocktail-instructions__title {
+  display: inline-block;
+  font-size: 1.6rem;
+  border-bottom: 2px solid var(--color-gray-light);
+}
+
+.cocktail-instructions__title .logo {
+  font-size: 1.6rem;
+}
+
+.cocktail-instructions__details {
+  color: var(--color-gray);
+  margin-top: 1.5rem;
+  margin-bottom: 2rem;
+  line-height: 1.6;
+}
+
+.cocktail__ingredients {
+  margin: 2rem 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  list-style: none;
+  padding-bottom: -0.8rem;
+}
+
+.cocktail__ingredients li {
+  padding: 0.35rem 1.5rem;
+  background-color: var(--color-white);
+  border-radius: 3rem;
+  border: 1px solid var(--color-gray-light);
+  margin-right: 0.8rem;
+  margin-bottom: 0.8rem;
+  color: var(--color-main);
+}
+
+.cocktail__ingredients li span {
+  font-weight: bold;
+  letter-spacing: 0.5px;
+  color: var(--color-dark);
 }

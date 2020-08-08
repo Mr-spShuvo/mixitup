@@ -35,7 +35,14 @@ a {
   text-decoration: none;
   color: var(--color-dark);
 }
-
+label {
+  position: absolute;
+  top: 0;
+  left: -9999px;
+}
+input:focus {
+  outline: none;
+}
 /*------------------
 => Components
 --------------------*/
@@ -102,7 +109,7 @@ header {
 
 .search__input {
   width: 30rem;
-  padding: 0.6rem;
+  padding: 0.6rem 1rem;
   border-radius: 3px;
   border: 2px solid var(--color-gray);
   margin-right: 1rem;
@@ -186,12 +193,9 @@ header {
 .cocktail-box:hover {
   border: 2px solid var(--color-main-light);
 }
-.cocktail-box__thumb {
-  width: 95%;
-}
 
 .cocktail-box__info {
-  margin-left: 1rem;
+  margin-left: 3rem;
 }
 
 .cocktail-box__title {

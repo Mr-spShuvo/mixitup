@@ -1,12 +1,22 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Drink from './Drink';
+
+import Header from './modules/Header';
+import Footer from './modules/Footer';
+import Search from './modules/Search';
+import Filters from './modules/Filters';
+import SearchResults from './modules/SearchResults';
 
 const App = () => {
   return (
     <>
-      <h1 className="logo">🍸 Mix<span>!</span>tUp </h1>
-      <Drink name="Mojito" category="Classic" types="Alcoholic" />
+      <Header />
+      <Search />
+      <div className="content-box">
+        <Filters />
+        <SearchResults />
+      </div>
+      <Footer />
     </>
   );
 };

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const useDropdown = (defaultState, label, optionList, optionName) => {
+const useDropdown = (label, defaultState, optionList, optionName) => {
   const [state, setState] = useState(defaultState);
   const id = `use-dropdown-${label.replace(' ', '')}`;
 
@@ -25,7 +25,7 @@ const useDropdown = (defaultState, label, optionList, optionName) => {
     </div>
   );
 
-  return [state, setState, dropdown];
+  return [state, dropdown, setState];
 };
 
 export default useDropdown;

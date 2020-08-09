@@ -78,6 +78,7 @@ header {
   padding: 1.5rem 0;
   position: fixed;
   width: 100%;
+  z-index: 111;
 }
 
 .logo {
@@ -100,6 +101,7 @@ header {
 => Search Box
 --------------------*/
 .search {
+  position: relative;
   max-width: 60%;
   margin: 0 auto;
   text-align: center;
@@ -143,6 +145,9 @@ header {
   align-self: flex-start;
   border: 2px solid var(--color-light);
   transition: all 0.3s;
+  position: absolute;
+  bottom: -26.6rem;
+  left: -7rem;
 }
 
 .filters:hover {
@@ -166,6 +171,7 @@ header {
 
 .results {
   flex-basis: 65%;
+  margin-left: auto;
 }
 
 /*------------------
@@ -175,7 +181,18 @@ header {
 .results__card {
   display: block;
 }
-
+.results__not-found {
+  height: 34.5rem;
+  font-size: 2rem;
+  text-align: center;
+  margin-top: 5rem;
+}
+.results__not-found span {
+  color: var(--color-gray);
+  font-weight: normal;
+  font-size: 1.6rem;
+  display: block;
+}
 .cocktail-box {
   border: 2px solid var(--color-light);
   display: flex;
@@ -186,7 +203,7 @@ header {
   transition: all 0.3s;
 }
 
-.cocktail-box:not(:last-of-type) {
+.results__card:not(:last-of-type) {
   margin-bottom: 2.5rem;
 }
 
@@ -198,6 +215,10 @@ header {
   margin-left: 3rem;
 }
 
+.cocktail-box__thumb {
+  width: 18rem;
+  height: auto;
+}
 .cocktail-box__title {
   line-height: 1;
   color: var(--color-main);
@@ -262,6 +283,8 @@ footer {
   padding: 2.5rem;
   background-color: var(--color-white);
   text-align: center;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 footer a {

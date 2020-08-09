@@ -4,7 +4,9 @@ const api = () => {
     host: host,
     categoryList: `${host}/list.php?c=list`,
     typeList: `${host}/list.php?a=list`,
-    glassList: `${host}/list.php?g=list`
+    glassList: `${host}/list.php?g=list`,
+    search: `${host}/search.php?s=`,
+    details: `${host}/lookup.php?i=`
   };
 };
 

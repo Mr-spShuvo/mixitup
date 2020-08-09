@@ -6,7 +6,7 @@ export default function Header() {
       <h1 className="logo">
         <span role="img" aria-label="cocktail">
           🍸
-        </span>{' '}
+        </span>
         Mix<span>!</span>tUp
       </h1>
       <p className="logo__subtitle">Bartenders Secret Sauce</p>

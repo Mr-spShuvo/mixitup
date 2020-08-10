@@ -4,6 +4,7 @@ import { Link } from '@reach/router';
 
 import api from '../config';
 import ErrorBoundary from './ErrorBoundary';
+import ShareModal from './ShareModal';
 
 class Details extends React.Component {
   // constructor(props) {
@@ -12,7 +13,7 @@ class Details extends React.Component {
   //     loading: true
   //   };
   // }
-  state = { loading: true };
+  state = { loading: true, showModal: false };
 
   componentDidMount() {
     const getApiData = async () => {
@@ -24,6 +25,8 @@ class Details extends React.Component {
     };
     getApiData();
   }
+
+  toggleModal = () => this.setState({ showModal: !this.state.showModal });
 
   render() {
     if (this.state.loading)
@@ -77,12 +80,12 @@ class Details extends React.Component {
                   </span>
                   &nbsp; {strDrink}
                 </h3>
-                <a href="#share" className="share-btn">
+                <button onClick={this.toggleModal} className="share-btn">
                   <img
                     src=" data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIj8+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4PSIwcHgiIHk9IjBweCIgdmlld0JveD0iMCAwIDUxMiA1MTIiIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDUxMiA1MTI7IiB4bWw6c3BhY2U9InByZXNlcnZlIiB3aWR0aD0iNTEycHgiIGhlaWdodD0iNTEycHgiPjxnPjxnPgoJPGc+CgkJPHBhdGggZD0iTTQwNiwzMzJjLTI5LjY0MSwwLTU1Ljc2MSwxNC41ODEtNzIuMTY3LDM2Ljc1NUwxOTEuOTksMjk2LjEyNGMyLjM1NS04LjAyNyw0LjAxLTE2LjM0Niw0LjAxLTI1LjEyNCAgICBjMC0xMS45MDYtMi40NDEtMjMuMjI1LTYuNjU4LTMzLjYzNmwxNDguNDQ1LTg5LjMyOEMzNTQuMzA3LDE2Ny40MjQsMzc4LjU4OSwxODAsNDA2LDE4MGM0OS42MjksMCw5MC00MC4zNzEsOTAtOTAgICAgYzAtNDkuNjI5LTQwLjM3MS05MC05MC05MGMtNDkuNjI5LDAtOTAsNDAuMzcxLTkwLDkwYzAsMTEuNDM3LDIuMzU1LDIyLjI4Niw2LjI2MiwzMi4zNThsLTE0OC44ODcsODkuNTkgICAgQzE1Ni44NjksMTkzLjEzNiwxMzIuOTM3LDE4MSwxMDYsMTgxYy00OS42MjksMC05MCw0MC4zNzEtOTAsOTBjMCw0OS42MjksNDAuMzcxLDkwLDkwLDkwYzMwLjEzLDAsNTYuNjkxLTE1LjAwOSw3My4wMzUtMzcuODA2ICAgIGwxNDEuMzc2LDcyLjM5NUMzMTcuODA3LDQwMy45OTUsMzE2LDQxMi43NSwzMTYsNDIyYzAsNDkuNjI5LDQwLjM3MSw5MCw5MCw5MGM0OS42MjksMCw5MC00MC4zNzEsOTAtOTAgICAgQzQ5NiwzNzIuMzcxLDQ1NS42MjksMzMyLDQwNiwzMzJ6IiBkYXRhLW9yaWdpbmFsPSIjMDAwMDAwIiBjbGFzcz0iYWN0aXZlLXBhdGgiIGRhdGEtb2xkX2NvbG9yPSIjMDAwMDAwIiBmaWxsPSIjRkZGRkZGIi8+Cgk8L2c+CjwvZz48L2c+IDwvc3ZnPgo="
                     alt="share"
                   />
-                </a>
+                </button>
               </div>
             </div>
             <div className="cocktail-instructions">
@@ -137,6 +140,39 @@ class Details extends React.Component {
             </div>
           </div>
         </div>
+        {console.log(this.props)}
+        {this.state.showModal ? (
+          <ShareModal>
+            <h3>Share the secret sauce of {strDrink} to the world?</h3>
+            <div className="share-link">
+              <a
+                target="_blank"
+                rel="noreferrer"
+                href={`https://www.facebook.com/sharer/sharer.php?u=${this.props.location.href}`}
+                className="share-link__facebook"
+              >
+                Facebook
+              </a>
+              <a
+                target="_blank"
+                rel="noreferrer"
+                className="share-link__twitter"
+                href={`https://twitter.com/intent/tweet?text=${strDrink}+${this.props.location.href}`}
+              >
+                Twitter
+              </a>
+              <a
+                className="share-link__reddit"
+                target="_blank"
+                rel="noreferrer"
+                href={`https://www.reddit.com/submit?url=${this.props.location.href}`}
+              >
+                Reddit
+              </a>
+            </div>
+            <button onClick={this.toggleModal}>X</button>
+          </ShareModal>
+        ) : null}
       </>
     );
   }

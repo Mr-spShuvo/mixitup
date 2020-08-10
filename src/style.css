@@ -4,6 +4,7 @@
 :root {
   --color-main: #8cbd18;
   --color-main-light: #f8ffb3;
+  --color-main-light-opacity: #f8ffb380;
   --color-dark: #333;
   --color-gray: #888;
   --color-gray-light: #ddd;
@@ -42,6 +43,12 @@ label {
 }
 input:focus {
   outline: none;
+}
+
+button {
+  border: none;
+  outline: none;
+  cursor: pointer;
 }
 /*------------------
 => Components
@@ -439,4 +446,58 @@ footer a {
 .cocktail__info {
   padding-top: 1rem;
   border-top: 1px solid var(--color-gray-light);
+}
+
+#share-box > div > div {
+  position: absolute;
+  z-index: 111;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: var(--color-light);
+  padding: 5rem;
+  border-radius: 1rem;
+  border: 3px solid var(--color-main);
+}
+
+#share-box > div {
+  position: absolute;
+  height: 100vh;
+  width: 100vw;
+  background-color: var(--color-main-light-opacity);
+}
+
+#share-box button {
+  position: absolute;
+  top: 2rem;
+  right: 2rem;
+  background-color: var(--color-main);
+  color: var(--color-light);
+  font-size: 1.5rem;
+  padding: 0.5rem 0.9rem;
+  border-radius: 50%;
+  opacity: all 0.3s;
+}
+
+#share-box button:hover {
+  background-color: var(--color-dark);
+}
+
+#share-box h3 {
+  margin: 2rem 0;
+}
+
+.share-link {
+  display: flex;
+  justify-content: space-around;
+}
+
+.share-link a {
+  padding-bottom: 3px;
+  border-bottom: 2px solid var(--color-main);
+  opacity: all 0.3s;
+}
+
+.share-link a:hover {
+  color: var(--color-main);
 }

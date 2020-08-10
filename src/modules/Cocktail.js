@@ -1,6 +1,8 @@
 import React from 'react';
+import { Link } from '@reach/router';
 
 export default function Cocktail({
+  id,
   strDrinkThumb,
   strDrink,
   strCategory,
@@ -50,9 +52,12 @@ export default function Cocktail({
             </span>
             &nbsp;{strGlass}
           </p>
-          <a href="#link" className="cocktail-box__link btn btn--dark">
+          <Link
+            to={`/details/${id}`}
+            className="cocktail-box__link btn btn--dark"
+          >
             MixItUp Instruction
-          </a>
+          </Link>
         </div>
       </div>
     </div>

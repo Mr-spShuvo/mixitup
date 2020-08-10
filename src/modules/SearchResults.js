@@ -11,7 +11,7 @@ export default function SearchResults({ cocktails }) {
           <div className="results__card">
             <h1 className="results__not-found">
               No results found!
-              <span>Try searching like - Margarita.</span>
+              <span>Try something like - Margarita.</span>
             </h1>
           </div>
         ) : (

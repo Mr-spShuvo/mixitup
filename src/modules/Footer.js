@@ -4,7 +4,7 @@ export default function Footer() {
   return (
     <footer>
       <p>
-        Made with React +{' '}
+        Made with React + &nbsp;
         <a href="https://www.thecocktaildb.com/">TheCocktailDB</a> 👌
       </p>
       <p>
@@ -12,7 +12,7 @@ export default function Footer() {
         <span role="img" aria-label="hi">
           👋
         </span>
-        <a href="https://spshuvo.com">spshuvo.com</a> 2020
+        <a href="https://spshuvo.com">spshuvo.com</a> {new Date().getFullYear}
       </p>
     </footer>
   );

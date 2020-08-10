@@ -1,26 +1,30 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
 
 import useDropdown from '../modules/useDropdown';
 import api from '../config';
 import SearchResults from './SearchResults';
+import SearchContext from './SearchContext';
 
 export default function Search() {
-  const [cocktail, setCocktail] = useState([]);
-  const [apiData, setApiData] = useState([]);
-
-  async function getApiData() {
-    try {
-      const cocktailData = await axios.get(api().search + cocktail);
-      setApiData(cocktailData.data.drinks || []);
-    } catch (error) {
-      console.log(error);
-    }
-  }
-
+  const [loader, setLoader] = useState(false);
   const [cList, setCList] = useState([]);
   const [gList, setGList] = useState([]);
   const [tList, setTList] = useState([]);
+  const [apiData, setApiData] = useState([]);
+  const [searchParams, setSearchParams] = useContext(SearchContext);
+
+  async function getApiData() {
+    try {
+      const cocktailData = await axios.get(
+        api().search + searchParams.searchKey
+      );
+      setApiData(cocktailData.data.drinks || []);
+      setLoader(false);
+    } catch (error) {
+      console.log(error); //eslint-disable-line
+    }
+  }
 
   const [category, CategoryDropdown] = useDropdown(
     'Category',
@@ -42,7 +46,22 @@ export default function Search() {
     axios.get(api().typeList).then(res => {
       setTList(res.data.drinks);
     });
+    if (searchParams.searchKey) {
+      getApiData();
+      setLoader(true);
+    }
   }, [category, type, glass]);
+
+  let filteredData = apiData;
+  if (type) {
+    filteredData = filteredData.filter(item => item.strAlcoholic == type);
+  }
+  if (category) {
+    filteredData = filteredData.filter(item => item.strCategory == category);
+  }
+  if (glass) {
+    filteredData = filteredData.filter(item => item.strGlass == glass);
+  }
 
   return (
     <>
@@ -50,6 +69,7 @@ export default function Search() {
         <form
           onSubmit={e => {
             e.preventDefault();
+            setLoader(true);
             getApiData();
           }}
         >
@@ -59,8 +79,10 @@ export default function Search() {
             type="text"
             placeholder="Enter cocktail name..."
             name="searchKey"
-            value={cocktail}
-            onChange={e => setCocktail(e.target.value)}
+            value={searchParams.searchKey}
+            onChange={e => {
+              setSearchParams({ searchKey: e.target.value });
+            }}
           />
           <div className="filters">
             <h3 className="filters__title">
@@ -76,7 +98,13 @@ export default function Search() {
           <input className="btn btn--dark" type="submit" value="Search" />
         </form>
       </div>
-      <SearchResults cocktails={apiData} />
+      {loader ? (
+        <div className="loading loading--home">
+          <span aria-label="loader icon"></span>
+        </div>
+      ) : (
+        <SearchResults cocktails={filteredData} />
+      )}
     </>
   );
 }

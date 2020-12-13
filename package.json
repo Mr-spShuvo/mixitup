@@ -4,10 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "parcel src/index.html",
+    "build": "rm -rf .cache/ dist/ && parcel build src/index.html",
+    "dev": "parcel src/index.html --open",
     "format": "prettier \"src/**/*.{js,html}\" --write",
-    "lint": "eslint \"src/**/*.{js,html}\" --quiet",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "lint": "eslint \"src/**/*.{js,html}\" --quiet"
   },
   "repository": {
     "type": "git",

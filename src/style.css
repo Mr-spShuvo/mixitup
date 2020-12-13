@@ -8,7 +8,7 @@
   --color-dark: #333;
   --color-gray: #888;
   --color-gray-light: #ddd;
-  --color-light: #f9f9f9;
+  --color-light: #f3f3f3;
   --color-white: #fff;
 }
 
@@ -36,11 +36,13 @@ a {
   text-decoration: none;
   color: var(--color-dark);
 }
+
 label {
   position: absolute;
   top: 0;
   left: -9999px;
 }
+
 input:focus {
   outline: none;
 }

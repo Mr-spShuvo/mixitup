@@ -28,13 +28,12 @@ export default function Search() {
 
   const [category, CategoryDropdown] = useDropdown(
     'Category',
-    '',
     cList,
     'strCategory'
   );
 
-  const [type, TypeDropdown] = useDropdown('Type', '', tList, 'strAlcoholic');
-  const [glass, GlassDropdown] = useDropdown('Glass', '', gList, 'strGlass');
+  const [type, TypeDropdown] = useDropdown('Type', tList, 'strAlcoholic');
+  const [glass, GlassDropdown] = useDropdown('Glass', gList, 'strGlass');
 
   useEffect(() => {
     axios.get(api().categoryList).then(res => {
@@ -50,7 +49,7 @@ export default function Search() {
       getApiData();
       setLoader(true);
     }
-  }, [category, type, glass]);
+  }, [category, type, glass, searchParams]); // eslint-disable-line
 
   let filteredData = apiData;
   if (type) {

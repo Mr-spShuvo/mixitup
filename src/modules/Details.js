@@ -140,7 +140,7 @@ class Details extends React.Component {
             </div>
           </div>
         </div>
-        {console.log(this.props)}
+
         {this.state.showModal ? (
           <ShareModal>
             <h3>Share the secret sauce of {strDrink} to the world?</h3>

@@ -1,8 +1,14 @@
-import React, { useState } from 'react';
+import React, { useContext } from 'react';
 
-const useDropdown = (label, defaultState, optionList, optionName) => {
-  const [state, setState] = useState(defaultState);
+import SearchContext from './SearchContext';
+
+const useDropdown = (label, optionList, optionName) => {
+  const [searchParams, setSearchParams] = useContext(SearchContext);
+
   const id = `use-dropdown-${label.replace(' ', '')}`;
+
+  const handleSubmit = e =>
+    setSearchParams(prev => ({ ...prev, [optionName]: e.target.value }));
 
   const dropdown = () => (
     <div className="filters-box">
@@ -11,9 +17,9 @@ const useDropdown = (label, defaultState, optionList, optionName) => {
         id={id}
         className="filters-box__input"
         name="category"
-        value={state}
-        onChange={e => setState(e.target.value)}
-        onBlur={e => setState(e.target.value)}
+        value={searchParams[optionName]}
+        onChange={handleSubmit}
+        onBlur={handleSubmit}
       >
         <option value="">Select Drinks {label}</option>
         {optionList.map(e => (
@@ -25,7 +31,7 @@ const useDropdown = (label, defaultState, optionList, optionName) => {
     </div>
   );
 
-  return [state, dropdown, setState];
+  return [searchParams[optionName], dropdown];
 };
 
 export default useDropdown;

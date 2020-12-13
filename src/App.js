@@ -9,7 +9,12 @@ import Details from './modules/Details';
 import SearchContext from './modules/SearchContext';
 
 const App = () => {
-  const searchContext = useState({});
+  const searchContext = useState({
+    searchKey: '',
+    strCategory: '',
+    strAlcoholic: '',
+    strGlass: ''
+  });
   return (
     <React.StrictMode>
       <SearchContext.Provider value={searchContext}>
